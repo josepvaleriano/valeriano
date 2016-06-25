@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Una Calculadora</string>
+    <string name="error_operation">Operación invalida</string>
+</resources>

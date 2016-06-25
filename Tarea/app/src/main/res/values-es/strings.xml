@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Following</string>
+    <string name="btnLogin">Entrar</string>
+    <string name="sayHello" formatted="false" >Hola %s bienvenido</string>
+    <string name="login_empty">El usuario no puede ser vacio</string>
+    <string name="wrong_credentials">El usuario o la contraseña son incorrectos</string>
+    <string name="password_empty">La contraseña no puede ser vacia</string>
+    <string name="btnFragment1">Perfil</string>
+    <string name="btnFragment2">Lista</string>
+    <string name="passMsg">Mensaje de paso</string>
+    <string name="pass_login">Pasó entgrada</string>
+    <string name="hello" formatted="false" >Hola %s bienvenido</string>
+    <string name="frag_list_btnAdd">Agregar</string>
+    <string name="btnRegistrerLogin">Registrar</string>
+    <string name="register_user">Registrar usuario</string>
+    <string name="rememberCredentials">Recordar credentiales</string>
+    <string name="lastAcceses">Acceso por usuario compilado</string>
+</resources>

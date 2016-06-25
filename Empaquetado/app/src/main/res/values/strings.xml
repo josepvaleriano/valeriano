@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Execice 1</string>
+    <string name="btnFragment1">Profile</string>
+    <string name="btnFragment2">List</string>
+    <string name="login_empty">Login can\'t be empty</string>
+    <string name="wrong_credentials">The user or password is incorrect</string>
+    <string name="password_empty">Password can\'t be empty</string>
+    <string name="btnFragmentAdd">Add</string>
+    <string name="hello" formatted="false">hello %s welcome</string>
+    <string name="pass_login">Pass login</string>
+    <string name="img_profile"></string>
+</resources>

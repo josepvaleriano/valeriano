@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Following</string>
+    <string name="btnLogin">Login</string>
+    <string name="sayHello" formatted="false" >hello %s welcome</string>
+    <string name="login_empty">Login can\'t be empty</string>
+    <string name="wrong_credentials">The user or password is incorrect</string>
+    <string name="password_empty">Password can\'t be empty</string>
+    <string name="pass_login">Pass login</string>
+    <string name="passMsg">Message of test</string>
+    <string name="btnFragment1">Profile</string>
+    <string name="btnFragment2">List</string>
+    <string name="hello" formatted="false" >hello %s welcome</string>
+    <string name="frag_list_btnAdd">Add</string>
+    <string name="btnRegistrerLogin">Registrer</string>
+    <string name="register_user">Register user</string>
+    <string name="rememberCredentials">Remember credentials</string>
+    <string name="lastAcceses">Hardcode user access</string>
+</resources>
