@@ -45,7 +45,7 @@
         <Button
             android:layout_weight="1"
             android:textAllCaps="false"
-            android:text="Login"
+            android:text="@string/btnLogin"
             android:id="@+id/activity_main_btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

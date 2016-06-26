@@ -1,6 +1,7 @@
 package test.valeriano.mx.tarea;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import test.valeriano.mx.tarea.model.ModelUser;
 import test.valeriano.mx.tarea.util.PreferenceUtil;
 
 /*Constructor principal, debe extender de @AppCompatActivity para tener funcionalidades mejoradas
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String [] usr_to_login = {"jose", "luis", "unam", "javier", "Zenkun"};
     private String [] pwd_to_login = {"unam"};
     private PreferenceUtil preferenceUtil;
-
+    private boolean accessLoginHardCode;
 
     /* Actividad principal principal onCreate()*/
     @Override
@@ -35,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findView();
-        listenerdButton();
+        findViewById(R.id.activity_main_btnLogin).setOnClickListener(this);
+        findViewById(R.id.activity_main_btnRegistrerLogin).setOnClickListener(this);
+
         preferenceUtil= new PreferenceUtil(getApplicationContext());
     }
 
@@ -74,9 +78,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             showMsg(R.string.password_empty);
         }
         else {
-            validateLogin(user, password);
+            if (accessLoginHardCode) {
+                validateLogin(user, password);
+            }else {
+                validateLoginPreferens(user, password);
+            }
         }
         loading.setVisibility(View.INVISIBLE);
+    }
+
+    private void validateLoginPreferens(final String user, final String password) {
+        new Handler().postDelayed(
+            new Runnable() {
+              @Override
+              public void run() {
+                  loading.setVisibility(View.GONE);
+                  ModelUser modelUser = preferenceUtil.getUser();
+                  if(modelUser==null){
+                    showMsg(R.string.need_registry);
+                  }else if (user.equals(modelUser.userName) && password.equals(modelUser.password)) {
+                      Toast.makeText(getApplicationContext(), R.string.pass_login, Toast.LENGTH_SHORT).show();
+                      Intent intent = new Intent(getApplicationContext(), ActivityDetail.class);
+                      intent.putExtra("key_user", user);
+                      startActivity(intent);
+                  }
+                  else
+                      showMsg(R.string.errorMsg);
+              }
+          },1000*1);
     }
 
     /*Una vez validado guarda el usuario*/
@@ -99,31 +128,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /*Metódo para dejar activos los listener de los botones*/
-    private void listenerdButton() {
-        try {
-            findViewById(R.id.activity_main_btnLogin).setOnClickListener((View.OnClickListener) this);
-            findViewById(R.id.activity_main_btnRegistrerLogin).setOnClickListener((View.OnClickListener) this);
 
-            chkRememberMe.setOnCheckedChangeListener(
-                    new CompoundButton.OnCheckedChangeListener(){
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            Log.d(ServiceTimer.TAG,"Checkeo es: "+isChecked);
-                        }
-                    }
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /*Metódo para buscar los elementos de la pantalla*/
     private void findView() {
         mUser = (EditText) findViewById(R.id.activity_main_user);
         mPassword = (EditText) findViewById(R.id.activity_main_password);
         loading = findViewById(R.id.progress);
-        chkRememberMe = (CheckBox) findViewById(R.id.activity_main_chkRememberMe);
-        chkHardCodeLogin = (CheckBox) findViewById(R.id.activity_main_chkHardCodeLogin);
+        //chkRememberMe = (CheckBox) findViewById(R.id.activity_main_chkRememberMe);
+        //chkHardCodeLogin = (CheckBox) findViewById(R.id.activity_main_chkHardCodeLogin);
     }
 
     private void showMsg(int resourceString) {

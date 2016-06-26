@@ -7,18 +7,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="test.valeriano.mx.tarea.MainActivity">
 
-
-    <ProgressBar
-
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <EditText
-        android:layout_below="@id/progress"
         android:id="@+id/activity_main_user"
         android:hint="username"
         android:layout_width="match_parent"
@@ -31,6 +23,15 @@
         android:hint="password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <ProgressBar
+        android:layout_below="@+id/activity_main_password"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
     <TextView
         android:layout_below="@id/activity_main_password"
         android:id="@+id/Hello_Wordl"
@@ -64,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
+-->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -73,10 +74,11 @@
         android:layout_height="wrap_content">
         <Button
             android:layout_weight="1"
+            android:visibility="visible"
             android:id="@+id/activity_main_btnRegistrerLogin"
             android:text="@string/btnRegistrerLogin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
         <Button
             android:layout_weight="1"
             android:textAllCaps="false"

@@ -9,4 +9,6 @@
     <string name="btnFragmentAdd">Agregar</string>
     <string name="hello" formatted="false" >Hola %s bienvenido</string>
     <string name="pass_login">Pasando login</string>
+    <string name="btnLogin">Ingresar</string>
+    <string name="empty_list">El elemento no puede ser vacio</string>
 </resources>

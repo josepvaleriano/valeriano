@@ -42,33 +42,32 @@ public class FragmentList extends Fragment{
                     AdapterItemList adapter= (AdapterItemList) parent.getAdapter();
                     ModelItem modelItem =adapter.getItem(position);
                     ModelItem modelItem2 = array.get(position);
-                    //aqui generar otro action activity
-                    FragmentProfile f = FragmentProfile.newInstance(modelItem2.item);
-                    getFragmentManager().beginTransaction().replace(R.id.fragmentHolder,f).commit();
-                    //Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
                 }
             }
         );
         final EditText mItemsText = (EditText) view.findViewById(R.id.frmItemText);
-        view.findViewById(R.id.frmBtnAddItem);
-        view.setOnClickListener(
+        view.findViewById(R.id.frmBtnAddItem).setOnClickListener(
             new View.OnClickListener() {
                 public void onClick(View v) {
                     String itemData = mItemsText.getText().toString();
-                    if(!TextUtils.isEmpty(itemData)){
-                        ModelItem item =new ModelItem();
+                    if (!TextUtils.isEmpty(itemData)) {
+                        ModelItem item = new ModelItem();
                         item.item = itemData;
-                        item.id  = "Description más counter"+counter;
-                        item.resourceId=isWifi?R.drawable.ic_device_signal_wifi_4_bar:R.drawable.ic_action_settings_voice;
+                        item.id = "Description más counter " + counter;
+                        item.resourceId = isWifi ? R.drawable.ic_device_signal_wifi_4_bar : R.drawable.ic_action_settings_voice;
                         array.add(item);
-                        listView.setAdapter(new AdapterItemList(getActivity(),array));
-                        isWifi=!isWifi;
+                        listView.setAdapter(new AdapterItemList(getActivity(), array));
+                        isWifi = !isWifi;
                         counter++;
                         mItemsText.setText("");
+                    } else {
+                        Toast.makeText(getActivity(),R.string.empty_list,Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
-                }
+            }
         );
 
         return view;

@@ -61,8 +61,10 @@ public class FragmentList extends Fragment {
                     isWifi=!isWifi;
                     counter++;
                     mItemsText.setText("");
-                }
+                } else {
+                    Toast.makeText(getActivity(),R.string.empty_list,Toast.LENGTH_SHORT).show();
 
+                }
             }
         });
         return view;

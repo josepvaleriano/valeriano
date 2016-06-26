@@ -17,6 +17,7 @@
     <Button
         android:id="@+id/activity_register_btnRegisterUser"
         android:text="@string/register_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

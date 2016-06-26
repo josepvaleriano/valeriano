@@ -16,4 +16,7 @@
     <string name="register_user">Registrar usuario</string>
     <string name="rememberCredentials">Recordar credentiales</string>
     <string name="lastAcceses">Acceso por usuario compilado</string>
+    <string name="empty_list">El elemento no puede ser vacio</string>
+    <string name="need_registry">Necesita registrarse</string>
+    <string name="errorMsg">Se presento un error</string>
 </resources>

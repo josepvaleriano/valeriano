@@ -28,8 +28,7 @@ public class PreferenceUtil {
     }
 
     /*Metodo encarcado de obtener las preferencias del usuario*/
-    public ModelUser getUser()
-    {
+    public ModelUser getUser(){
         String mUser=sp.getString("user_name",null);
         String mPassword=sp.getString("user_password",null);
         if(TextUtils.isEmpty(mUser) || TextUtils.isEmpty(mPassword))

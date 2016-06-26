@@ -9,4 +9,6 @@
     <string name="hello" formatted="false">hello %s welcome</string>
     <string name="pass_login">Pass login</string>
     <string name="img_profile"></string>
+    <string name="btnLogin">Login</string>
+    <string name="empty_list">Item can\'t be empty</string>
 </resources>

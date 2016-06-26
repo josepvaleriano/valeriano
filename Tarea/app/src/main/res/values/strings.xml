@@ -15,4 +15,7 @@
     <string name="register_user">Register user</string>
     <string name="rememberCredentials">Remember credentials</string>
     <string name="lastAcceses">Hardcode user access</string>
+    <string name="empty_list">Item can\'t be empty</string>
+    <string name="need_registry">You need register</string>
+    <string name="errorMsg">We have an error</string>
 </resources>
