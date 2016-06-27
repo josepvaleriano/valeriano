@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import test.valeriano.mx.tarea.model.ModelUser;
+import test.valeriano.mx.tarea.service.ServiceTimer;
 import test.valeriano.mx.tarea.util.PreferenceUtil;
 
 /*Constructor principal, debe extender de @AppCompatActivity para tener funcionalidades mejoradas
@@ -25,11 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText mPassword;
     private CheckBox chkRememberMe;
     private CheckBox chkHardCodeLogin;
+    private Button btnRegistrar;
     private View loading;
     private String [] usr_to_login = {"jose", "luis", "unam", "javier", "Zenkun"};
     private String [] pwd_to_login = {"unam"};
     private PreferenceUtil preferenceUtil;
-    private boolean accessLoginHardCode;
+
 
     /* Actividad principal principal onCreate()*/
     @Override
@@ -39,8 +41,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findView();
         findViewById(R.id.activity_main_btnLogin).setOnClickListener(this);
         findViewById(R.id.activity_main_btnRegistrerLogin).setOnClickListener(this);
-
         preferenceUtil= new PreferenceUtil(getApplicationContext());
+        chkRememberMe.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        preferenceUtil.setAccessLoginHardCode(false);
+                        if (b){
+                            chkHardCodeLogin.setEnabled(false);
+                            btnRegistrar.setEnabled(true);
+                        }
+                        else{
+                            chkHardCodeLogin.setEnabled(true);
+                        }
+                        Log.d(ServiceTimer.TAG,"Checkeo es: "+b);
+                    }
+                }
+        );
+        chkHardCodeLogin.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b){
+                            chkRememberMe.setEnabled(false);
+                            btnRegistrar.setEnabled(false);
+                            preferenceUtil.setAccessLoginHardCode(true);
+                        }
+                        else{
+                            chkRememberMe.setEnabled(true);
+                            btnRegistrar.setEnabled(true);
+                            preferenceUtil.setAccessLoginHardCode(false);
+                        }
+                        Log.d(ServiceTimer.TAG,"Checkeo es: "+b);
+                    }
+                }
+        );
     }
 
     /*Metodo para escuchar el onclick*/
@@ -78,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             showMsg(R.string.password_empty);
         }
         else {
-            if (accessLoginHardCode) {
+            if (preferenceUtil.getAccessLoginHardCode()) {
                 validateLogin(user, password);
             }else {
                 validateLoginPreferens(user, password);
@@ -101,9 +136,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                       Intent intent = new Intent(getApplicationContext(), ActivityDetail.class);
                       intent.putExtra("key_user", user);
                       startActivity(intent);
+                      startService(new Intent(getApplicationContext(), ServiceTimer.class));
+
                   }
                   else
-                      showMsg(R.string.errorMsg);
+                      showMsg(R.string.need_registry);
               }
           },1000*1);
     }
@@ -135,8 +172,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mUser = (EditText) findViewById(R.id.activity_main_user);
         mPassword = (EditText) findViewById(R.id.activity_main_password);
         loading = findViewById(R.id.progress);
-        //chkRememberMe = (CheckBox) findViewById(R.id.activity_main_chkRememberMe);
-        //chkHardCodeLogin = (CheckBox) findViewById(R.id.activity_main_chkHardCodeLogin);
+        chkRememberMe = (CheckBox) findViewById(R.id.activity_main_chkRememberMe);
+        chkHardCodeLogin = (CheckBox) findViewById(R.id.activity_main_chkHardCodeLogin);
+        btnRegistrar = (Button) findViewById(R.id.activity_main_btnRegistrerLogin);
     }
 
     private void showMsg(int resourceString) {

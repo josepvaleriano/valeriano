@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Following</string>
+    <string name="app_name">Remember and DB</string>
     <string name="btnLogin">Login</string>
     <string name="sayHello" formatted="false" >hello %s welcome</string>
     <string name="login_empty">Login can\'t be empty</string>
@@ -14,8 +14,10 @@
     <string name="btnRegistrerLogin">Registrer</string>
     <string name="register_user">Register user</string>
     <string name="rememberCredentials">Remember credentials</string>
-    <string name="lastAcceses">Hardcode user access</string>
+    <string name="hardCodeLogin">Hardcode user access</string>
     <string name="empty_list">Item can\'t be empty</string>
     <string name="need_registry">You need register</string>
     <string name="errorMsg">We have an error</string>
+    <string name="delete_title">Delete item</string>
+    <string name="ask_Delete_item">¿Want delete this element %s?</string>
 </resources>

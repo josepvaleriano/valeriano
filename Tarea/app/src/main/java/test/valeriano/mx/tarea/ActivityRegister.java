@@ -19,6 +19,7 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
     private EditText mUser;
     private EditText mPassword;
 
+    /*Crea la vista del activity Register*/
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
@@ -67,6 +68,7 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
         mPassword = (EditText) findViewById(R.id.activity_register_mPasswordRegister);
     }
 
+    /* Metódo para mostrar los mensajes*/
     private void showMsg(int resourceString) {
         Toast.makeText(getApplicationContext(),resourceString,Toast.LENGTH_SHORT).show();
     }

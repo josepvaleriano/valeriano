@@ -10,9 +10,11 @@ import test.valeriano.mx.tarea.model.ModelUser;
  * Created by luis.valeriano on 23/06/2016.
  */
 public class PreferenceUtil {
+
     /*Declaración de variables*/
     private static final String FILE_NAME ="unam_tarea";
     private final SharedPreferences sp;
+    private boolean accessLoginHardCode;
 
     /*Crea la clase PreferenceUtil con el contexto de la aplicación*/
     public PreferenceUtil(Context context){
@@ -34,6 +36,15 @@ public class PreferenceUtil {
         if(TextUtils.isEmpty(mUser) || TextUtils.isEmpty(mPassword))
             return null;
         return new ModelUser(mUser,mPassword);
+    }
 
+    /*Establece el tipo de acceso*/
+    public void setAccessLoginHardCode(Boolean access){
+        this.accessLoginHardCode = access;
+    }
+
+    /*Obtiene el tipo de acceso hardcode true funciona con 4 login compilados*/
+    public Boolean getAccessLoginHardCode(){
+        return this.accessLoginHardCode;
     }
 }
