@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import test.valeriano.mx.tarea.model.ModelUser;
 import test.valeriano.mx.tarea.service.ServiceTimer;
+import test.valeriano.mx.tarea.sql.ItemDataSource;
 import test.valeriano.mx.tarea.util.PreferenceUtil;
 
 /*Constructor principal, debe extender de @AppCompatActivity para tener funcionalidades mejoradas
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String [] pwd_to_login = {"unam"};
     private PreferenceUtil preferenceUtil;
 
+    private ItemDataSource itemDS;
 
     /* Actividad principal principal onCreate()*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        itemDS = new ItemDataSource(getBaseContext());
         findView();
         findViewById(R.id.activity_main_btnLogin).setOnClickListener(this);
         findViewById(R.id.activity_main_btnRegistrerLogin).setOnClickListener(this);
@@ -65,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (b){
                             chkRememberMe.setEnabled(false);
                             btnRegistrar.setEnabled(false);
+                            mUser.setText("");
+                            mPassword.setText("");
                             preferenceUtil.setAccessLoginHardCode(true);
                         }
                         else{
@@ -76,6 +81,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
         );
+        verifiyRemember();
+    }
+
+    private void verifiyRemember() {
+        ModelUser modelUser = preferenceUtil.getModelUser();
+        if (modelUser!=null && !modelUser.userName.isEmpty() && modelUser.rememberId){
+            mUser.setText(modelUser.getUserName());
+            mPassword.setText(modelUser.getPassword());
+            chkRememberMe.setChecked(modelUser.getRememberId());
+        }
     }
 
     /*Metodo para escuchar el onclick*/
@@ -106,18 +121,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String user = mUser.getText().toString();
         String password = mPassword.getText().toString();
         loading.setVisibility(View.VISIBLE);
-        if(TextUtils.isEmpty(user)) {
-            showMsg(R.string.login_empty);
-        }
-        else if(TextUtils.isEmpty(password)) {
-            showMsg(R.string.password_empty);
-        }
-        else {
-            if (preferenceUtil.getAccessLoginHardCode()) {
-                validateLogin(user, password);
-            }else {
-                validateLoginPreferens(user, password);
+        try {
+            if (TextUtils.isEmpty(user)) {
+                showMsg(R.string.login_empty);
+            } else if (TextUtils.isEmpty(password)) {
+                showMsg(R.string.password_empty);
+            } else {
+                if (preferenceUtil.getAccessLoginHardCode()) {
+                    validateLogin(user, password);
+                } else {
+                    validateLoginPreferens(user, password);
+                }
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         loading.setVisibility(View.INVISIBLE);
     }
@@ -128,13 +145,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
               @Override
               public void run() {
                   loading.setVisibility(View.GONE);
-                  ModelUser modelUser = preferenceUtil.getUser();
+                  ModelUser modelUser = preferenceUtil.getModelUser();
                   if(modelUser==null){
                     showMsg(R.string.need_registry);
                   }else if (user.equals(modelUser.userName) && password.equals(modelUser.password)) {
                       Toast.makeText(getApplicationContext(), R.string.pass_login, Toast.LENGTH_SHORT).show();
+                      ModelUser dbModelUser = itemDS.getDataUser(user);
+                      dbModelUser.setRememberId(chkRememberMe.isChecked());
+                      /*Se tenvía true para salvar preferencia de recordar*/
+                      preferenceUtil.saveUser(modelUser, true);
                       Intent intent = new Intent(getApplicationContext(), ActivityDetail.class);
-                      intent.putExtra("key_user", user);
+                      intent.putExtra(PreferenceUtil.KEY_USERS, user);
+                      intent.putExtra(PreferenceUtil.KEY_REMEMBER, dbModelUser.getRememberId() );
+                      if (dbModelUser.getCreation()!=null)
+                        intent.putExtra(PreferenceUtil.KEY_CREATION, dbModelUser.getCreation()+"");
+                      if (dbModelUser.getLast_Conection()!=null)
+                        intent.putExtra(PreferenceUtil.KEY_LAST_CONECTION, dbModelUser.getLast_Conection()+"");
                       startActivity(intent);
                       startService(new Intent(getApplicationContext(), ServiceTimer.class));
 
@@ -152,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (user.equals(usr_to_login[i]) && password.equals(pwd_to_login[0])) {
                 Toast.makeText(getApplicationContext(), R.string.pass_login, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ActivityDetail.class);
-                intent.putExtra("key_user", user);
+                intent.putExtra(PreferenceUtil.KEY_USERS, user);
                 ingreso = true;
                 startActivity(intent);
                 break;
@@ -182,4 +208,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @Override
+    protected void onDestroy() {
+        //sabe last extado de conexión
+        super.onDestroy();
+    }
 }

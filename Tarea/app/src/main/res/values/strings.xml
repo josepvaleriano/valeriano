@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Remember and DB</string>
     <string name="btnLogin">Login</string>
-    <string name="sayHello" formatted="false" >hello %s welcome</string>
+    <string name="sayHello" formatted="false" >hello welcome</string>
     <string name="login_empty">Login can\'t be empty</string>
     <string name="wrong_credentials">The user or password is incorrect</string>
     <string name="password_empty">Password can\'t be empty</string>
@@ -9,7 +9,6 @@
     <string name="passMsg">Message of test</string>
     <string name="btnFragment1">Profile</string>
     <string name="btnFragment2">List</string>
-    <string name="hello" formatted="false" >hello %s welcome</string>
     <string name="frag_list_btnAdd">Add</string>
     <string name="btnRegistrerLogin">Registrer</string>
     <string name="register_user">Register user</string>
@@ -19,5 +18,10 @@
     <string name="need_registry">You need register</string>
     <string name="errorMsg">We have an error</string>
     <string name="delete_title">Delete item</string>
-    <string name="ask_Delete_item">¿Want delete this element %s?</string>
+    <string name="ask_Delete_item">¿Do you want delete this element %s?</string>
+    <string name="hintUsername">username</string>
+    <string name="hintPassword">password</string>
+    <string name="userRegisted">User registed</string>
+    <string name="btnBorrarSesion">close and Clear sesion</string>
+    <string name="lastConection">Last conection</string>
 </resources>

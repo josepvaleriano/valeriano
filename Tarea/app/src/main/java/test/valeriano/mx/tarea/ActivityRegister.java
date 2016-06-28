@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import test.valeriano.mx.tarea.model.ModelUser;
+import test.valeriano.mx.tarea.sql.ItemDataSource;
 import test.valeriano.mx.tarea.util.PreferenceUtil;
 
 /**
@@ -18,6 +19,8 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
 
     private EditText mUser;
     private EditText mPassword;
+    private ItemDataSource itemDS;
+
 
     /*Crea la vista del activity Register*/
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
         findView();
         listenerdButton();
+        itemDS = new ItemDataSource(getApplicationContext());
+
     }
 
     /*Metodo para escuchar el onclick de la forma*/
@@ -48,7 +53,13 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
         }
         else {
             PreferenceUtil util = new PreferenceUtil(getApplicationContext());
-            util.saveUser(new ModelUser(user,password));
+            ModelUser modelUser = new ModelUser(user,password);
+            /* Se envía false para no salvar preferencia de recordar ID*/
+            util.saveUser(modelUser, false);
+            if (itemDS.getDataUser(user).userName.isEmpty())
+                itemDS.saveUser(modelUser);
+            else
+                showMsg(R.string.userRegisted);
             finish();
         }
     }

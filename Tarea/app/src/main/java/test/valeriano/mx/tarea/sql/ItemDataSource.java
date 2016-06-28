@@ -20,6 +20,8 @@ import test.valeriano.mx.tarea.model.ModelUser;
  * Created by luis.valeriano on 26/06/2016.
  */
 public class ItemDataSource {
+    /*/data/data/test.valeriano.mx.tarea/databases/unam_android*/
+
     private final SQLiteDatabase db;
 
     /*
@@ -41,8 +43,8 @@ public class ItemDataSource {
 
     /*Método para borrar un elemento de la lista*/
     public void deleteItem(ModelItem modelItem){
-        String where = sqlHprItemsData.C_ITEM_01ID + "=?";
-        db.delete(sqlHprItemsData.TABLE_NAME_ITEM_LIST, where,  new String[]{String.valueOf(modelItem.id )});
+        String where = sqlHprItemsData.C_ITEM_02NAME + "=?";
+        db.delete(sqlHprItemsData.TABLE_NAME_ITEM_LIST, where,  new String[]{String.valueOf(modelItem.item )});
     }
 
     /*Método para salvar los datos de un usuario*/
@@ -81,7 +83,10 @@ public class ItemDataSource {
     /*Método para la obtención de datos del usuario*/
     public ModelUser getDataUser(String user){
         ModelUser modelUser = new ModelUser();
-        String[] campos = new String[] {sqlHprItemsData.C_USERS_04LAST_CONECTION };
+        String[] campos = new String[] {sqlHprItemsData.C_USERS_02NAME,
+                sqlHprItemsData.C_USERS_03PASSWD,
+                sqlHprItemsData.C_USERS_04LAST_CONECTION,
+                sqlHprItemsData.C_USERS_05CREATION};
         String[] args = new String[] {user};
         String where = sqlHprItemsData.C_ITEM_02NAME + "=?";
 
@@ -91,12 +96,20 @@ public class ItemDataSource {
             while (c.moveToNext()){
                 String usr = c.getString(c.getColumnIndexOrThrow(sqlHprItemsData.C_USERS_02NAME));
                 String pwd = c.getString(c.getColumnIndexOrThrow(sqlHprItemsData.C_USERS_03PASSWD));
-                Date dateLastConection = new Date(c.getLong(2)*1000);
-                Date dateCreation = new Date(c.getLong(3)*1000);
+                Date dateLastConection;
+                if (c.getLong(2)>0) {
+                    dateLastConection = new Date(c.getLong(2) * 1000);
+                    modelUser.last_Conection = dateLastConection;
+                }
+                Date dateCreation;
+                if (c.getLong(3)>0) {
+                    dateCreation = new Date(c.getLong(3) * 1000);
+                    modelUser.creation = dateCreation;
+                }
                 modelUser.userName = usr;
                 modelUser.password = pwd;
-                modelUser.last_Conection = dateLastConection;
-                modelUser.creation = dateCreation;
+
+
             }
         }finally {
             c.close();

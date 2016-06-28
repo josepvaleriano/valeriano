@@ -62,11 +62,11 @@ public class FragmentList extends Fragment {
                 new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                        AdapterItemList adapterItemList = (AdapterItemList) adapterView.getParent();
+                        AdapterItemList adapterItemList = (AdapterItemList) adapterView.getAdapter();
                         final ModelItem mi = adapterItemList.getItem(position);
                         new AlertDialog.Builder(getActivity())
                                 .setTitle(R.string.delete_title)
-                                .setMessage(String.format(R.string.ask_Delete_item+"", mi.item))
+                                .setMessage(String.format("¿Do you want delete this element %s?", mi.item))
                                 .setPositiveButton(android.R.string.ok,new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         itemDS.deleteItem(mi);

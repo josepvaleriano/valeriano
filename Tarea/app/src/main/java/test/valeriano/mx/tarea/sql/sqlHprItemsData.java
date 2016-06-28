@@ -4,7 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.provider.MediaStore;
 import android.util.Log;
+
+import java.io.File;
 
 import test.valeriano.mx.tarea.service.ServiceTimer;
 
@@ -14,7 +17,9 @@ import test.valeriano.mx.tarea.service.ServiceTimer;
  * Created by luis.valeriano on 26/06/2016.
  */
 public class sqlHprItemsData extends SQLiteOpenHelper{
+
     private final static String DATABASE_NAME = "unam_android";
+    private static String RUTE = "data/data/test.valeriano.mx.tarea/database/" +DATABASE_NAME;
     private final static int DATABASE_VERSION = 1;
 
     public final static String TABLE_NAME_ITEM_LIST = "item_table";
@@ -23,7 +28,7 @@ public class sqlHprItemsData extends SQLiteOpenHelper{
     public final static String C_ITEM_03DESC = "description";
     public final static String C_ITEM_04RESOURCE = "resource";
 
-    public final static String TABLE_NAME_USERS = "item_table";
+    public final static String TABLE_NAME_USERS = "user_table";
     public final static String C_USERS_01ID = BaseColumns._ID;
     public final static String C_USERS_02NAME = "name";
     public final static String C_USERS_03PASSWD = "password";
@@ -70,4 +75,10 @@ public class sqlHprItemsData extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(ServiceTimer.TAG,"OnUpgrade SQL from "+oldVersion+ " to "+newVersion);
     }
+
+    public void deleteTable(SQLiteDatabase db){
+        db.delete(TABLE_NAME_USERS, null, null);
+        db.delete(TABLE_NAME_ITEM_LIST, null, null);
+    }
+
 }

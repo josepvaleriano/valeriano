@@ -5,13 +5,13 @@
 
     <EditText
         android:id="@+id/activity_register_mUserRegister"
-        android:hint="user"
+        android:hint="@string/hintUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
         android:inputType="textPassword"
         android:id="@+id/activity_register_mPasswordRegister"
-        android:hint="password"
+        android:hint="@string/hintPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button

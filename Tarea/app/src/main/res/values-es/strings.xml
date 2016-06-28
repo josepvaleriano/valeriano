@@ -2,15 +2,15 @@
 <resources>
     <string name="app_name">Recordar y BD</string>
     <string name="btnLogin">Entrar</string>
-    <string name="sayHello" formatted="false" >Hola %s bienvenido</string>
+    <string name="sayHello" formatted="false" >Hola bienvenido</string>
     <string name="login_empty">El usuario no puede ser vacio</string>
     <string name="wrong_credentials">El usuario o la contraseña son incorrectos</string>
     <string name="password_empty">La contraseña no puede ser vacia</string>
     <string name="btnFragment1">Perfil</string>
     <string name="btnFragment2">Lista</string>
     <string name="passMsg">Mensaje de paso</string>
-    <string name="pass_login">Pasó entgrada</string>
-    <string name="hello" formatted="false" >Hola %s bienvenido</string>
+    <string name="pass_login">Pasó entrada</string>
+
     <string name="frag_list_btnAdd">Agregar</string>
     <string name="btnRegistrerLogin">Registrar</string>
     <string name="register_user">Registrar usuario</string>
@@ -21,4 +21,9 @@
     <string name="errorMsg">Se presento un error</string>
     <string name="delete_title">Eliminar elemento</string>
     <string name="ask_Delete_item">¿Desea borrar el elemento %s?</string>
+    <string name="hintUsername">usuario</string>
+    <string name="hintPassword">contraseña</string>
+    <string name="userRegisted">Usuario registrado</string>
+    <string name="btnBorrarSesion">Cierra y Borrar sesión</string>
+    <string name="lastConection">Ültimo estado de conexión</string>
 </resources>
