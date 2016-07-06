@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_device_signal_wifi_4_bar"
+            android:layout_gravity="center"
+            android:id="@+id/rowlist_rowImagenView"
+            android:layout_width="@dimen/rowlist_widthImagen"
+            android:layout_height="@dimen/rowlist_heightImagen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.3"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Nombre aplicación"
+            android:elegantTextHeight="true"
+            android:gravity="left"
+            android:textColor="@color/TitleAplication"
+            android:id="@+id/rowlist_txtTitleAplication"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:gravity="left"
+
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Desarrollador"
+            android:textColor="@color/TitleDeveloper"
+            android:id="@+id/rowlist_txtDesarrollador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:gravity="right"
+
+            android:textSize="18sp"
+            android:text="actualizada"
+            android:textStyle="normal"
+            android:textColor="@color/TitleActualy"
+            android:id="@+id/rowlist_txtInstalada"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="0.2"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar_row"/>
+    </LinearLayout>
+</LinearLayout>
