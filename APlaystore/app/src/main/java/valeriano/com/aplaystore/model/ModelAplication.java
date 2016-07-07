@@ -7,7 +7,7 @@ package valeriano.com.aplaystore.model;
 public class ModelAplication {
     public String nameAplication;
     public String nameDeveloper;
-    public int resourceId;
+    public String resourceId;
     public int instaled;
 
     /*
@@ -23,7 +23,7 @@ public class ModelAplication {
     * Contructor de la clase con los parametros de entrada @nameAplication
     * y @nameDeveloper
     * */
-    public ModelAplication(String nameAplication, String nameDeveloper, int resourceId, int instaled){
+    public ModelAplication(String nameAplication, String nameDeveloper, String resourceId, int instaled){
         this.nameAplication = nameAplication;
         this.nameDeveloper = nameDeveloper;
         this.resourceId = resourceId;
@@ -57,12 +57,12 @@ public class ModelAplication {
     }
 
     /*Método para obtener el recurso id de la imagen  */
-    public int getResourceId() {
+    public String getResourceId() {
         return resourceId;
     }
 
     /*Método para establecer el recurso id de la imagen  */
-    public void setResourceId(int resourceId) {
+    public void setResourceId(String resourceId) {
         this.resourceId = resourceId;
     }
 

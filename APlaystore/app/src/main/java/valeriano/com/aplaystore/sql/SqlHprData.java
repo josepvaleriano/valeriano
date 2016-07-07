@@ -25,10 +25,10 @@ public class SqlHprData extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "create table " + TABLE_NAME +
             "(" + C_01ID+" integer primary key autoincrement,"+
-            C_02NAMEAPLICATION +" text,"+
-            C_03NAMEDEVELOPER+ " text,"+
-            C_04RESOURCEID + " integer "+
-            C_05INSTALED + " integer)";
+            C_02NAMEAPLICATION +" text null, "+
+            C_03NAMEDEVELOPER+ " text null, "+
+            C_04RESOURCEID + " text null, "+
+            C_05INSTALED + " integer null)";
 
     public SqlHprData(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
