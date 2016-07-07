@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">APlay store</string>
+    <string name="contentTitle">Aplicación instalada</string>
+    <string name="contentText">Se ha completado la instalación</string>
+    <string name="contentInfo">Instalado</string>
+    <string name="tanksInstaled">Se ha completado la instalación\\n gracias por usar Aplay store</string>
+    <string name="AppUpdate">Updating</string>
+    <string name="ApptInstaled">Instaled</string>
+    <string name="AppNotInstaled">Not instaled</string>
+    <string name="NoAplications">No hay aplicaciones instaladas</string>
+    <string name="menu_agregarApp">Agregar</string>
+    <string name="activityAddDev_NameAplication">Nombre de la aplicación</string>
+    <string name="activityAddDev_etNameDev">Nombre del desarrollador</string>
+    <string name="activityAddDev_etDetail">Detalle de la aplicación</string>
+    <string name="activityAddDev_btnSave">Guardar</string>
+    <string name="serviveActionDownload">Descargando aplicación</string>
+    <string name="serviveActionUploading">Actualizando aplicación</string>
+    <string name="activityDataRequiere">Dato requerido</string>
+</resources>

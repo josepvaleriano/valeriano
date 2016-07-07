@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".AddDevActivity">
+
+        <EditText
+            android:padding="16dp"
+            android:id="@+id/activityAddDev_etNameAplication"
+            android:hint="@string/activityAddDev_NameAplication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:padding="16dp"
+            android:id="@+id/activityAddDev_etNameDev"
+            android:hint="@string/activityAddDev_etNameDev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/activityAddDev_etDetail"
+            android:hint="@string/activityAddDev_etDetail"
+            android:maxLines="@android:integer/config_longAnimTime"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:padding="16dp"
+            android:text="@string/activityAddDev_btnSave"
+            android:id="@+id/activityAddDev_btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
