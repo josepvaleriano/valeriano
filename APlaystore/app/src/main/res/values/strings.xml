@@ -16,4 +16,12 @@
     <string name="serviveActionDownload">Downloading application</string>
     <string name="serviveActionUploading">Uplodaing application</string>
     <string name="activityDataRequiere">Data requiered</string>
+    <string name="itemDetail_btnUninstall">Uninstall</string>
+    <string name="itemDetail_btnOpen">Open</string>
+    <string name="itemDetail_btnUpdate">Update</string>
+
+    <string name="menu_editApp">Edit</string>
+    <string name="itemDetail_btnSave">Save</string>
+    <string name="menu_txtdetal">Detail</string>
+    <string name="uninstall">Uninstall application</string>
 </resources>

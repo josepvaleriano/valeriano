@@ -9,6 +9,7 @@ public class ModelAplication {
     public String nameDeveloper;
     public String resourceId;
     public int instaled;
+    public String detail;
 
     /*
     * Contructor de la clase con los parametros de entrada @nameAplication
@@ -34,6 +35,8 @@ public class ModelAplication {
     public ModelAplication(){
         this.nameAplication = "";
         this.nameDeveloper = "";
+        resourceId = "";
+        detail = "";
     }
 
     /*Método para obtener el nombre de la aplicación*/
@@ -76,4 +79,13 @@ public class ModelAplication {
         this.instaled = instaled;
     }
 
+    /*Metódo para obtener el detalle de la aplicación*/
+    public String getDetail() {
+        return detail;
+    }
+
+    /*Metódo para establecer el detalle de la aplicación*/
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 }

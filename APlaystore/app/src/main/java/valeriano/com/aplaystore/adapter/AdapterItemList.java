@@ -34,12 +34,14 @@ public class AdapterItemList extends ArrayAdapter<ModelAplication>{
         TextView txtVwDevep = (TextView) convertView.findViewById(R.id.rowlist_txtDesarrollador);
         ImageView img = (ImageView) convertView.findViewById(R.id.rowlist_rowImagenView);
         TextView txtInstal = (TextView) convertView.findViewById(R.id.rowlist_txtInstalada);
+        TextView txtDetail = (TextView) convertView.findViewById(R.id.rowlist_txtDetail);
         ModelAplication mApp = getItem(position);
         txtVwTitleApp.setText(mApp.nameAplication);
         if (!mApp.getNameAplication().isEmpty()) {
             txtVwDevep.setText(mApp.getNameDeveloper());
             txtInstal.setText(getInstaled(mApp.instaled));
             Picasso.with(getContext()).load(mApp.resourceId).into(img);
+            txtDetail.setText(mApp.getDetail());
         }
         return convertView;
     }

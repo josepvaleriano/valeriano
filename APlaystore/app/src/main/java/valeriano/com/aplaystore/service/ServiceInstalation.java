@@ -44,14 +44,14 @@ public class ServiceInstalation extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG,"Oncreate servicio");
+        Log.d(TAG,"Oncreate servicio" + id);
     }
 
     /*Método @onDestroy para destruir el servicio*/
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestroy servicio");
+        Log.d(TAG,"onDestroy servicio" + id);
     }
 
     /*Método @onStartCommand para manjera el servicio*/
@@ -69,12 +69,14 @@ public class ServiceInstalation extends Service {
                 modelAplication.resourceId = intent.getExtras().getString(utilPlayStore.KEY_RESOURCEID);
             if (intent.getExtras().containsKey(utilPlayStore.KEY_STATUS))
                 modelAplication.instaled = intent.getExtras().getInt(utilPlayStore.KEY_STATUS);
+            if (intent.getExtras().containsKey(utilPlayStore.KEY_DETAIL))
+                modelAplication.detail= intent.getExtras().getString(utilPlayStore.KEY_DETAIL);
         }
         if (myAsyncTask == null){
             myAsyncTask = new MyAsyncTask();
             myAsyncTask.execute();
         }
-        Log.d(TAG,"onStartCommand servicio");
+        Log.d(TAG,"onStartCommand servicio " + id);
         return START_STICKY;
     }
 
@@ -113,6 +115,7 @@ public class ServiceInstalation extends Service {
                     return false;
                 }
             }
+            Log.d(TAG,"doInBackground servicio" + id);
             return true;
         }
 
@@ -124,6 +127,7 @@ public class ServiceInstalation extends Service {
             mNotif.setProgress(timeProcessing, values[0],false);
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             manager.notify(id, mNotif.build());
+            Log.d(TAG,"onProgressUpdate servicio" + id);
         }
 
         /*Método para mostrar el resultado de la acción*/
@@ -143,9 +147,13 @@ public class ServiceInstalation extends Service {
                                 1,new Intent(getApplicationContext(),
                                         MainActivity.class),PendingIntent.FLAG_UPDATE_CURRENT);
                 mNotif.setContentIntent(pendingIntent);
-                myAsyncTask = null;
-                stopSelf();
+                NotificationManager manager  = (NotificationManager)
+                        getSystemService(Context.NOTIFICATION_SERVICE);
+                manager.notify(id,mNotif.build());
             }
+            myAsyncTask = null;
+            stopSelf();
+            Log.d(TAG,"onPostExecute servicio" + id);
         }
     }
 

@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle( R.string.app_name);
-        getSupportActionBar().setIcon(android.R.drawable.stat_sys_download_done);
+
+        getSupportActionBar().setIcon(android.R.drawable.sym_def_app_icon);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         getFragmentManager().beginTransaction().replace(R.id.activityMain_fragmentHolder,

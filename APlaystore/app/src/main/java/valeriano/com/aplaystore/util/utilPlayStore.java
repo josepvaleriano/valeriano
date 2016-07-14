@@ -14,5 +14,7 @@ public class utilPlayStore {
     public static final String  KEY_NAMEDEV = "key_namedev";
     public static final String  KEY_RESOURCEID = "key_resource";
     public static final String  KEY_STATUS = "key_status";
+    public static final String  KEY_DETAIL = "key_detail";
+    public static final String  KEY_ACTION = "key_action";
 
 }

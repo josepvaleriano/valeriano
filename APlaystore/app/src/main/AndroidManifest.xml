@@ -18,7 +18,8 @@
 
         <service android:name=".service.ServiceInstalation" />
 
-        <activity android:name=".AddDevActivity"></activity>
+        <activity android:name=".AddDevActivity" />
+        <activity android:name=".ItemDetailActivity"></activity>
     </application>
 
 </manifest>

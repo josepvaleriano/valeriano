@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_weight="0.5"
+        android:layout_weight="0.2"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -18,7 +18,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="0.3"
+        android:layout_weight="0.8"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -35,19 +35,23 @@
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-
             android:textSize="20sp"
             android:textStyle="normal"
-
             android:textColor="@color/TitleDeveloper"
             android:id="@+id/rowlist_txtDesarrollador"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <TextView
+            android:gravity="left"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:textColor="@color/TitleDeveloper"
+            android:id="@+id/rowlist_txtDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
             android:gravity="right"
-
             android:textSize="18sp"
-
             android:textStyle="normal"
             android:textColor="@color/TitleActualy"
             android:id="@+id/rowlist_txtInstalada"

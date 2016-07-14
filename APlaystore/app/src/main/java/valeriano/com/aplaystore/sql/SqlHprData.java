@@ -14,7 +14,7 @@ import android.util.Log;
 public class SqlHprData extends SQLiteOpenHelper {
 
     private final static String DATABASE_NAME = "unam_aplications";
-    private final static int DATABASE_VERSION = 1;
+    private final static int DATABASE_VERSION = 2;
 
     public final static String TABLE_NAME = "aplications";
     public final static String C_01ID = BaseColumns._ID;
@@ -22,13 +22,15 @@ public class SqlHprData extends SQLiteOpenHelper {
     public final static String C_03NAMEDEVELOPER = "nameDeveloper";
     public final static String C_04RESOURCEID = "resourceId";
     public final static String C_05INSTALED = "instaled";
+    public final static String C_06DETAIL= "detail";
 
     private static final String CREATE_TABLE = "create table " + TABLE_NAME +
             "(" + C_01ID+" integer primary key autoincrement,"+
             C_02NAMEAPLICATION +" text null, "+
             C_03NAMEDEVELOPER+ " text null, "+
             C_04RESOURCEID + " text null, "+
-            C_05INSTALED + " integer null)";
+            C_05INSTALED + " integer null, "+
+            C_06DETAIL + " text null)";
 
     public SqlHprData(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -51,7 +53,10 @@ public class SqlHprData extends SQLiteOpenHelper {
     /*Método para la actualización de de la base de datos*/
     @Override
     public void onUpgrade(SQLiteDatabase sql, int oldVer, int newVer) {
-
+        if (newVer > oldVer) {
+            String alter = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + C_06DETAIL + " text null";
+            sql.execSQL(alter);
+        }
     }
 
     /*Método para el borrado de la table*/

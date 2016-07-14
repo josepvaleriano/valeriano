@@ -33,8 +33,8 @@ public class AppDataSource {
         cv.put(SqlHprData.C_03NAMEDEVELOPER, mApp.nameDeveloper);
         cv.put(SqlHprData.C_04RESOURCEID, mApp.resourceId);
         cv.put(SqlHprData.C_05INSTALED, mApp.instaled);
-        long x = db.insert(SqlHprData.TABLE_NAME,null,cv);
-        Log.d("AppDataSource.class", "Paso x = " + x);
+        cv.put(SqlHprData.C_06DETAIL, mApp.detail);
+        db.insert(SqlHprData.TABLE_NAME,null,cv);
     }
 
     /*
@@ -46,6 +46,19 @@ public class AppDataSource {
 
     }
 
+
+    /*
+    * Metódo para la eliminación de una aplicación*/
+    public void updateAplication(ModelAplication mApp){
+        String ClauseWhere = SqlHprData.C_02NAMEAPLICATION + "=?";
+        ContentValues cv = new ContentValues();
+        cv.put(SqlHprData.C_06DETAIL, mApp.detail);
+        db.update(SqlHprData.TABLE_NAME, cv , ClauseWhere,
+                new String[]{String.valueOf(mApp.nameAplication)} );
+
+    }
+
+    /*Metódo para obtener el lsitado de aplicaciones instalas*/
     public List<ModelAplication> getAllAplications(){
         List<ModelAplication> mList = new ArrayList<>();
         Cursor c = db.query(SqlHprData.TABLE_NAME,null,null, null, null, null, null);
@@ -56,6 +69,7 @@ public class AppDataSource {
                 String rId = c.getString(c.getColumnIndexOrThrow(SqlHprData.C_04RESOURCEID));
                 int inst = c.getInt(c.getColumnIndexOrThrow(SqlHprData.C_05INSTALED));
                 ModelAplication ma = new ModelAplication(nA, nD, rId, inst);
+                ma.detail = c.getString(c.getColumnIndexOrThrow(SqlHprData.C_06DETAIL));
                 mList.add(ma);
             }
         }finally{

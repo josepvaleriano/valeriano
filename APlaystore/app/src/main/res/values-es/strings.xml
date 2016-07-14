@@ -4,16 +4,24 @@
     <string name="contentText">Se ha completado la instalación</string>
     <string name="contentInfo">Instalado</string>
     <string name="tanksInstaled">Se ha completado la instalación\\n gracias por usar Aplay store</string>
-    <string name="AppUpdate">Updating</string>
-    <string name="ApptInstaled">Instaled</string>
-    <string name="AppNotInstaled">Not instaled</string>
+    <string name="AppUpdate">Actualizar</string>
+    <string name="ApptInstaled">Instalada</string>
+    <string name="AppNotInstaled">No instalada</string>
     <string name="NoAplications">No hay aplicaciones instaladas</string>
     <string name="menu_agregarApp">Agregar</string>
     <string name="activityAddDev_NameAplication">Nombre de la aplicación</string>
     <string name="activityAddDev_etNameDev">Nombre del desarrollador</string>
     <string name="activityAddDev_etDetail">Detalle de la aplicación</string>
     <string name="activityAddDev_btnSave">Guardar</string>
-    <string name="serviveActionDownload">Descargando aplicación</string>
-    <string name="serviveActionUploading">Actualizando aplicación</string>
+    <string name="serviveActionDownload">Descargando la aplicación</string>
+    <string name="serviveActionUploading">Actualizando la aplicación</string>
     <string name="activityDataRequiere">Dato requerido</string>
+    <string name="itemDetail_btnUninstall">Desinstalar</string>
+    <string name="itemDetail_btnOpen">Abrir</string>
+    <string name="itemDetail_btnUpdate">Actualziar</string>
+
+    <string name="menu_editApp">Editar</string>
+    <string name="itemDetail_btnSave">Guardar</string>
+    <string name="menu_txtdetal">Detalle</string>
+    <string name="uninstall">Desinstalar la aplicación</string>
 </resources>

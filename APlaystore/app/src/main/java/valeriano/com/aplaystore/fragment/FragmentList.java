@@ -1,6 +1,7 @@
 package valeriano.com.aplaystore.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import valeriano.com.aplaystore.ItemDetailActivity;
 import valeriano.com.aplaystore.R;
 import valeriano.com.aplaystore.adapter.AdapterItemList;
 import valeriano.com.aplaystore.model.ModelAplication;
 import valeriano.com.aplaystore.sql.AppDataSource;
+import valeriano.com.aplaystore.util.utilPlayStore;
 
 /**
  * Created by luis.valeriano on 06/07/2016.
@@ -23,6 +26,7 @@ import valeriano.com.aplaystore.sql.AppDataSource;
 public class FragmentList extends Fragment {
     private ListView listView;
     private AppDataSource appDS;
+    private final String DETAIL_ACCION_EXECUTE = "D";
 
     /*Método para crear el fragmento*/
     @Override
@@ -42,7 +46,15 @@ public class FragmentList extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
                 AdapterItemList adapter = (AdapterItemList) adapterView.getAdapter();
                 ModelAplication mApp = adapter.getItem(pos);
-                Toast.makeText(getActivity(),mApp.nameAplication,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),mApp.nameAplication,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
+                intent.putExtra(utilPlayStore.KEY_NAMEAPP, mApp.nameAplication );
+                intent.putExtra(utilPlayStore.KEY_NAMEDEV, mApp.nameDeveloper);
+                intent.putExtra(utilPlayStore.KEY_RESOURCEID, mApp.resourceId);
+                intent.putExtra(utilPlayStore.KEY_STATUS, mApp.instaled + "");
+                intent.putExtra(utilPlayStore.KEY_DETAIL, mApp.detail);
+                intent.putExtra(utilPlayStore.KEY_ACTION, DETAIL_ACCION_EXECUTE);
+                startActivity(intent);
             }
         });
         List<ModelAplication> lsApp = appDS.getAllAplications();

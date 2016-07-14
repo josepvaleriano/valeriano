@@ -33,7 +33,9 @@ public class AddDevActivity extends AppCompatActivity implements View.OnClickLis
             "https://lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300-rw",
             "https://lh5.ggpht.com/0HTaiRyUraX2o4B0IbW887TuLfZ70eNWOaOY9_xEiRck35V44BYXR5brEOy9MBUWBjo=w300-rw",
             "https://lh3.googleusercontent.com/SNjS81FG3okdMTief0vJu4BNTA03D7es5yRbfVUE2KMgYe5loR7t77bMX8rbG4gVN2TX=w300-rw",
-            "https://lh3.googleusercontent.com/2n0hceUvwwEW5maNUzRk4ucXgH_KIVBK0u_8eX_znW-DnnXTbx7MablS3po2_-LYBtFL=w300-rw"
+            "https://lh3.googleusercontent.com/2n0hceUvwwEW5maNUzRk4ucXgH_KIVBK0u_8eX_znW-DnnXTbx7MablS3po2_-LYBtFL=w300-rw",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblioteca_Central_UNAM_M%C3%A9xico.jpg/250px-Biblioteca_Central_UNAM_M%C3%A9xico.jpg",
+            "https://www.unam.mx/sites/default/files/images/menu/library-345273_1280.jpg"
 
     };
 
@@ -91,6 +93,7 @@ public class AddDevActivity extends AppCompatActivity implements View.OnClickLis
             int pos = r.nextInt(linkImg.length);
             mApp.setResourceId(linkImg[pos]);
             mApp.setInstaled(Integer.parseInt(utilPlayStore.STATUS_DONWLOAD));
+            mApp.setDetail(detail);
 
             Intent intent = new Intent(getApplicationContext(), ServiceInstalation.class);
             //intent.putExtra(utilPlayStore.KEY_ID, utilPlayStore.STATUS_DONWLOAD);
@@ -98,6 +101,7 @@ public class AddDevActivity extends AppCompatActivity implements View.OnClickLis
             intent.putExtra(utilPlayStore.KEY_NAMEDEV, mApp.nameDeveloper);
             intent.putExtra(utilPlayStore.KEY_RESOURCEID, mApp.resourceId);
             intent.putExtra(utilPlayStore.KEY_STATUS, mApp.instaled);
+            intent.putExtra(utilPlayStore.KEY_DETAIL, mApp.detail);
             startService(intent);
             appDS.saveAplication(mApp);
             intent = new Intent (getApplicationContext(), MainActivity.class);
