@@ -24,4 +24,8 @@
     <string name="itemDetail_btnSave">Save</string>
     <string name="menu_txtdetal">Detail</string>
     <string name="uninstall">Uninstall application</string>
+    <string name="openAplication">Open aplication web</string>
+    <string name="unInstaling">UnInstaling aplicaction ..</string>
+    <string name="updateAplication">Update aplication ...</string>
+    <string name="saveEditApp">Save changes of aplication</string>
 </resources>

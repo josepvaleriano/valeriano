@@ -118,16 +118,26 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.itemDetail_btnUpdate:
                 doUpdate();
                 break;
+            case R.id.itemDetail_btnSave:
+                doSaveEdit();
+                break;
         }
 
     }
 
-    private void doUpdate() {
+    private void doSaveEdit() {
+        Toast.makeText(getApplicationContext(), getString(R.string.saveEditApp) ,
+                Toast.LENGTH_SHORT).show();
+    }
 
+    private void doUpdate() {
+        Toast.makeText(getApplicationContext(), getString(R.string.updateAplication) ,
+                Toast.LENGTH_SHORT).show();
     }
 
     private void doOpen() {
-        Intent intent = new Intent();
+        Toast.makeText(getApplicationContext(), getString(R.string.openAplication) ,
+                Toast.LENGTH_SHORT).show();
     }
 
     private void doUninstall() {
@@ -141,7 +151,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(getApplicationContext(),"Desinstalar...",
+                    Toast.makeText(getApplicationContext(),getString(R.string.unInstaling) ,
                             Toast.LENGTH_SHORT).show();
                 }
             });

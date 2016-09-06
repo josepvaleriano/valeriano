@@ -24,4 +24,8 @@
     <string name="itemDetail_btnSave">Guardar</string>
     <string name="menu_txtdetal">Detalle</string>
     <string name="uninstall">Desinstalar la aplicación</string>
+    <string name="openAplication">Abre aplicación en web ...</string>
+    <string name="unInstaling">Desinstalando aplicación ..</string>
+    <string name="updateAplication">Actualizanado aplicación ...</string>
+    <string name="saveEditApp">Guardando cambios de la aplicación</string>
 </resources>
